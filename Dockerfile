@@ -2,20 +2,11 @@ FROM raspbian/stretch
 
 ARG INSTALL_DIR="/opt/intel/inference_engine_vpu_arm"
 
-RUN apt-get update && apt-get -y upgrade && apt-get autoremove
-
-#Install needed dependences
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get -y upgrade && apt-get autoremove && \
+    apt-get install -y --no-install-recommends \
         build-essential \
 	cmake \
-	libjpeg-dev \
-	libtiff5-dev \
-	libpng12-dev \
-	libatlas-base-dev \
-	gfortran \
         cpio \
-        curl \
-        git \
         lsb-release \
         pciutils \
         python3.5 \
@@ -23,7 +14,22 @@ RUN apt-get install -y --no-install-recommends \
         python3-pip \
         python3-setuptools \
 	ffmpeg \
-        sudo
+	libjpeg-dev \
+        libtiff5-dev \
+        libjasper-dev \
+        libpng12-dev \
+        libavcodec-dev \
+        libavformat-dev \
+        libswscale-dev \
+        libv4l-dev \
+        libxvidcore-dev \
+        libx264-dev \
+        libgtk2.0-dev \
+        libgtk-3-dev \
+        libatlas-base-dev \
+        gfortran \
+        libgstreamer1.0-0 \
+        libgstreamer-plugins-base1.0-0
 
 RUN usermod -a -G users "$(whoami)"
 
